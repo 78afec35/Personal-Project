@@ -8,10 +8,10 @@ def home():
 @app.route("/blog")
 def blog():
     return render_template("blog.html")
-@app.route("/")
+@app.route("/contactme")
 def contactme():
     return render_template("contactme.html")
-@app.route("/")
+@app.route("/login")
 def login():
     return render_template("login.html")
 
