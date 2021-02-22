@@ -4,7 +4,7 @@
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     </head>
     <header>
-      <h1 class="logo">Logo</h1>
+      <h1 class="logo">Suner Syuleyman</h1>
       <input type="checkbox" id="nav-toggle" class="nav-toggle">
       <nav>
         <ul>
@@ -19,13 +19,22 @@
     </header>
     
     
-    
-    
-    <div class="content">
+        <div class="content">
+      <section class=top>
         {%block content%} 
 
         {%endblock%}
+      <section class=middle>
+        {%block content2%} 
+  
+        {%endblock%}
+      <section class=bottom>
+        {%block content3%} 
+    
+        {%endblock%}
+      </section>
     </div>
+    
 
     </body>
 </html>

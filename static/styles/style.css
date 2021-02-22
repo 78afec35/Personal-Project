@@ -21,6 +21,10 @@ body {
   background-size: cover;
   display: grid;
   place-items: center;
+  text-rendering: optimizeLegibility;
+  text-justify: auto;
+
+
 }
 
 
