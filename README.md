@@ -1,4 +1,4 @@
-# Personal-Project - Website and blog
+# Personal-Project - Website and Blog
 
 Author: Suner Syuleyman
 
