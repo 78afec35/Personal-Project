@@ -50,6 +50,7 @@ Final part is to create a user to allow the XRDP client to log in. This done via
     sudo passwrd ubuntu 
 
 Then you enter your password and log in via RDP:
+
 ![RDP Connection Screen](ReadmeAssets/RDP.png)
 ![Desktop Screenshot](ReadmeAssets/XRDP.png)
 
