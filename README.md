@@ -17,7 +17,7 @@ Author: Suner Syuleyman
 
 This sets up most of the environment.
 
-    <#!/bin/bash 
+    #!/bin/bash 
     apt-get update
     sudo su -
     useradd ubuntu
@@ -35,7 +35,7 @@ This sets up most of the environment.
     sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     sudo apt update
-    sudo apt install code -y>
+    sudo apt install code -y
 
 ### **GCP Shell set up**
 
