@@ -141,7 +141,7 @@ nav a:hover {
   }
   
   nav {
-    // all: unset; 
+    all: unset; 
     position: relative;
     text-align: left;
     transition: none;
