@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask
 
 
 def create_app(test_config=None):
@@ -28,17 +28,14 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
-    # @app.route("/")
-    # def home():
-    #     return render_template("index.html")
-    # @app.route("/blog")
-    # def blog():
-    #     return render_template("blog.html")
-    # @app.route("/contactme")
-    # def contactme():
-    #     return render_template("contactme.html")
-    # @app.route("/login")
-    # def login():
-    #     return render_template("login.html")
+
+
+    from . import db
+    db.init_app(app)
+    from . import auth
+    app.register_blueprint(auth.bp)
+    from . import blog
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
