@@ -1,15 +1,18 @@
 import os
 
 from flask import Flask
-
+from flaskext.mysql import MySQL
+from flask_sqlalchemy import SQLAlchemy
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
+    db=SQLAlchemy(app)
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHAMY_DATABASE_URI'] = 'mysql://app:900xe12@35.197.235.105/personalapp'
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
