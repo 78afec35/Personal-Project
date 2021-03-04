@@ -1,5 +1,17 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
+<head>
+<title>
+{% if title %}
+
+  Personal Blog :{{ title }} </title>
+
+{% else %}
+
+  <title> Personal Blog </title>
+
+{% endif %}
+
+</head>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
   <h1>Suner Syuleyman</h1>

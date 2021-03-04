@@ -98,5 +98,6 @@ Clone Link <https://github.com/78afec35/Personal-Project.git>
 ## References
 
 1. Kevin Powell - CSS Navbar - <https://www.youtube.com/watch?v=8QKOaTYvYUA&ab_channel=KevinPowell>
-2. Background image - Langtang National Park, Nepal - Sergey Pesterev - <https://unsplash.com/@sickle>
-3. Flask Tutorial - <https://flask.palletsprojects.com/en/master/tutorial/>
+2. Corey Schafer - Tutorials - <https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g>
+3. Background image - Langtang National Park, Nepal - Sergey Pesterev - <https://unsplash.com/@sickle>
+4. Flask Tutorial - <https://flask.palletsprojects.com/en/master/tutorial/>

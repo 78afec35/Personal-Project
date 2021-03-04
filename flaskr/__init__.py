@@ -3,16 +3,23 @@ import os
 from flask import Flask
 from flaskext.mysql import MySQL
 from flask_sqlalchemy import SQLAlchemy
+from flaskr.config import Config
 
-def create_app(test_config=None):
+db=SQLAlchemy()
+
+def create_app(config_class = Config, test_config=False):
     # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-    )
-    db=SQLAlchemy(app)
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHAMY_DATABASE_URI'] = 'mysql://app:900xe12@35.197.235.105/personalapp'
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    from . import db
+    db.init_app(app)
+    from . import auth
+    app.register_blueprint(auth.bp)
+    from . import blog
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint='index')
+
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -33,12 +40,6 @@ def create_app(test_config=None):
         return 'Hello, World!'
 
 
-    from . import db
-    db.init_app(app)
-    from . import auth
-    app.register_blueprint(auth.bp)
-    from . import blog
-    app.register_blueprint(blog.bp)
-    app.add_url_rule('/', endpoint='index')
+
 
     return app

@@ -3,42 +3,37 @@ import pymysql
 import pymysql.cursors
 from flaskext.mysql import MySQL
 from flask_sqlalchemy import SQLAlchemy
-
-import click
-from flask import current_app, g
-from flask.cli import with_appcontext
-
-def get_db():
-    if 'db' not in g:
-        g.db = pymysql.connect(
-            current_app.config['SQLALCHAMY_DATABASE_URI'],
-            cursorclass=pymysql.cursors.DictCursor
-            )
-        g.db.row_factory = pymysql.Row
-
-    return g.db
+from datetime import datetime
 
 
-def close_db(e=None):
-    db = g.pop('db', None)
+# DROP TABLE IF EXISTS user;
+# DROP TABLE IF EXISTS post;
 
-    if db is not None:
-        db.close()
+# CREATE TABLE user (
+#   id INTEGER PRIMARY KEY AUTOINCREMENT,
+#   username TEXT UNIQUE NOT NULL,
+#   password TEXT NOT NULL
+# );
+class User (db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(30), unique=True, nullable=False)
+    password = db.Column(db.String(30),nullable=False)
+# CREATE TABLE post (
+#   id INTEGER PRIMARY KEY AUTOINCREMENT,
+#   author_id INTEGER NOT NULL,
+#   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+#   title TEXT NOT NULL,
+#   body TEXT NOT NULL,
+#   FOREIGN KEY (author_id) REFERENCES user (id)
+# );
+class Post (db.Model):
+    id =db.Column(db.Integer,primary_key=True)
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False )
+    created = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    title = db.Column(db.String(100), nullable=False)
+    body = db.Column(db.Text, nullable= False)
 
-def init_db():
-    db = get_db()
-
-    with current_app.open_resource('schema.sql') as f:
-        db.executescript(f.read().decode('utf8'))
 
 
-@click.command('init-db')
-@with_appcontext
-def init_db_command():
-    """Clear the existing data and create new tables."""
-    init_db()
-    click.echo('Initialized the database.')
 
-def init_app(app):
-    app.teardown_appcontext(close_db)
-    app.cli.add_command(init_db_command)
+
