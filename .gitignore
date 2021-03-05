@@ -5,6 +5,7 @@ venv/
 instance/*
 !instance/ .gitignore
 .webassets-cache
+flaskr.egg-info
 
 #flask.python Stack
 @Byte-compiled / optimized /dll files

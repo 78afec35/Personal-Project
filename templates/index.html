@@ -4,14 +4,15 @@
     Home Page
 {%endblock%}
 {%block content%} 
+        <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+            <a class="mr-2" href="#">{{ me.author }}</a>
+            <small class="text-muted">{{ me.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ me.title }}</a></h2>
+            <p class="article-content">{{ me.content }}</p>
+        </div>
+        </article>
 
-<h2>This is the Title part</h2>
-<p> </p>
-
-{%endblock%}
-{%block content2%} 
-<p>This is the main text box</p>
-{%endblock%}
-{%block content3%} 
-<p>This is the bottom string that should probably say date etc.</p>
 {%endblock%}
