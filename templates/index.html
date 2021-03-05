@@ -4,15 +4,16 @@
     Home Page
 {%endblock%}
 {%block content%} 
+    {% for id in me %}
         <article class="media content-section">
         <div class="media-body">
             <div class="article-metadata">
-            <a class="mr-2" href="#">{{ me.author }}</a>
-            <small class="text-muted">{{ me.date_posted }}</small>
+            <a class="mr-2" href="#">{{ id.author }}</a>
+            <small class="text-muted">{{ id.date_posted }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ me.title }}</a></h2>
-            <p class="article-content">{{ me.content }}</p>
+            <h2><a class="article-title" href="#">{{ id.title }}</a></h2>
+            <p class="article-content">{{ id.content }}</p>
         </div>
         </article>
-
-{%endblock%}
+    {% endfor %}
+{%endblock content%}
