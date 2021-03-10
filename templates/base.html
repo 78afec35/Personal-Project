@@ -20,9 +20,11 @@
       <input type="checkbox" id="nav-toggle" class="nav-toggle">
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contactme">Contact</a></li>
+          <li><a href="{{url_for('home')}}">Home</a></li>
+          <li><a href="{{url_for('blog')}}">Blog</a></li>
+          <li><a href="{{url_for('contactme')}}">Contact</a></li>
+          <li><a href="{{url_for('login')}}">Login</a></li>
+          <li><a href="{{url_for('register')}}">Register</a></li>                    
         </ul>
       </nav>
       <label for="nav-toggle" class="nav-toggle-label">
@@ -33,6 +35,15 @@
     
       <div class="content">
         <section class=top>
+          {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class= "alert alert-{{ category }}">
+                {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
           {%block content%} 
 
           {%endblock%}

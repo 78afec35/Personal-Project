@@ -14,7 +14,7 @@ body {
 }
 
 .content {
-  height: 200vh;
+  height: 100vh;
   background-image: url("../../static/img/img1.jpg");
   background-color: #333;
   background-blend-mode: multiply;
@@ -138,6 +138,7 @@ nav a:hover {
   
   .logo {
     grid-column: 2 / 3;
+    cursor:pointer
   }
   
   nav {
