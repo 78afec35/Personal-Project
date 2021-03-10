@@ -1,35 +1,7 @@
-from datetime import datetime
-from flask import Flask, redirect, url_for, render_template, flash
-from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'd4e754bef5ca6727f10a59665946bc42b07481dd9bbc66ed3dbc1a31d40e698ff18c2ebf71b8aa6163b2fc4526068e42c808bd1f8349c1197deacbb616655a1a98552b1d610d9c85ce137575ee54b2386eb67b6a23462badb05d48eee5862de07600691a89f56baed299d5ff9601e69c013ee35c609a30b82df1ec7249a6aacac0d9b3f7edffb6c3e56b3fc5341162efc5059f5f17ed35244c2e412f4fc790df86260b51bae94a21c812535e748c98d8a4af40097c640da2f4ff222da6cfaa9d19c69fffa520c3861b10893370c822742d1e4605a3ece75e76ee8403bbb5b66bccfc2762d2720e45202b1153e812c172ffc341416c2e74197140f3a3bdc3a434'
-app.config['SQLALCHEMY_DATABASE_URI']=  'sqlite:///blog.db'
-
-db = SQLAlchemy(app)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key= True)
-    username = db.Column(db.String(20), unique= True, nullable = False)
-    email = db.Column(db.String(120), unique= True, nullable = False)
-    image_file = db.Column(db.String(20), nullable = False, default='default.jpeg' )
-    password = db.Column(db.String(60), nullable = False)
-    posts = db.relationship('Post', backref='author', lazy = True)
-
-    def __repr__(self):
-        return f"User('{self.username}','{self.email}','{self.image_file}')"
-
-class Post(db.Model):
-    id = db.Column(db.Integer, primary_key= True)
-    title = db.Column(db.String(150), nullable = False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow )
-    content = db.Column(db.Text, nullable = False)
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-    def __repr__(self):
-        return f"Post('{self.title}','{self.dateposted}')"
+from flask import redirect, url_for, render_template, flash
+from personalproject.forms import RegistrationForm, LoginForm
+from personalproject.models import User, Post
+from personalproject import app
 
 posts = [
     {
@@ -86,6 +58,3 @@ def login():
         else: 
             flash('Login Unsuccessful. Please make sure your credantials are correct!', 'danger')
     return render_template('login.html', title='Login', form=form)
-
-if __name__ == "__main__":
-    app.run(debug=True)

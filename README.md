@@ -2,8 +2,9 @@
 
 Author: Suner Syuleyman
 
-## Requirements to run
+## Packages Used (Runtime Requirements)
 
+### Core Utililites
 + click 7.1.2
 + Flask 1.1.2
 + itsdangerous 1.1.0
@@ -11,11 +12,48 @@ Author: Suner Syuleyman
 + MarkupSafe 1.1.1
 + Werkzeug 1.0.1
 
+### Extra Utilities
+
++ astroid 2.5
++ attrs 20.3.0
++ dnspython 2.1.0
++ email-validator 1.1.2
++ Flask-CLI 0.4.0
++ Flask-MySQL 1.5.2
++ Flask-SQLAlchemy 2.4.4
++ Flask-WTF 0.14.3
++ idna 3.1
++ importlib-metadata 3.7.2
++ iniconfig 1.1.1
++ is-disposable-email 1.0.0
++ isort 5.7.0
++ lazy-object-proxy 1.5.2
++ mccabe 0.6.1
++ packaging 20.9
++ pkg-resources 0.0.0
++ pluggy 0.13.1
++ py 1.10.0
++ pylint 2.7.1
++ pylint-flask 0.6
++ pylint-flask-sqlalchemy 0.2.0
++ pylint-plugin-utils 0.6
++ PyMySQL 1.0.2
++ pyparsing 2.4.7
++ pytest 6.2.2
++ SQLAlchemy 1.3.23
++ toml 0.10.2
++ typed-ast 1.4.2
++ typing-extensions 3.7.4.3
++ wrapt 1.12.1
++ WTForms 2.3.3
++ wtforms-validators 1.0.0
++ zipp 3.4.1
+
 ##  Development Environment Set-Up
 
 ### **Bootstrap Bash Script**
 
-This sets up most of the environment.
+Once you have selected an Ubuntu 18.10 server from GCP. This sets up most of the environment.
 
     #!/bin/bash 
     apt-get update
@@ -66,6 +104,27 @@ Trello has been used as the primary source of project management.
 
 ### **Architecture**
 
+placeholder
+
+### **SWOT Analysis**
++ Strengths
+    + Quick and easy to deploy
+    + Agile and modular design
+    + Quick to edit and introduce new features
+    + Responsive website and systems
++ Weakneses
+    + Many packages are used and that can introduce dependencies on all these packages being supported
+    + Basic framework which means more complicated features might need an advanced framework
+    + Rigid 3 tier architecture
++ Opportunities
+    + There are many features that I would like to add onto this website
+    + It can be integrated with more features and packages
+    + Can be expanded from an application package framework into an application factory, allowing for microservices deployment
++ Threats
+    + In it's current state it is vulnerable to SQL injections and other threats such as having keys and passwords available inside the server.
+    + Cannot scale easily in its present form.
+    + No automatic measures to handle crashes/ errors and incidents.  
+
 ## Programming/Software Development
 
 ### **Version Control System**
@@ -82,18 +141,22 @@ Clone Link <https://github.com/78afec35/Personal-Project.git>
 
 ### **Tools used**
 
-+ Python
-+ HTML
-+ CSS
-+ Flask
-+ Jinja2
+
 + Jenkins
 + VS Code
 + Trello
++ Google Chrome
++ Google Cloud Platform (GCP)
++ Ubuntu 18.10
++ Bootstrap 4
 
 ## Testing
 
+placeholder
+
 ## Systems Integration and Build
+
+placeholder
 
 ## References
 

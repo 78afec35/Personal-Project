@@ -2,9 +2,5 @@
     "python.pythonPath": "/home/ubuntu/Personal-Project/venv/bin/python3"
 }
 {
-    "python.linting.pylintArgs":[
-        "--load-plugins",
-        "pylint_flask_sqlalchemy",
-        "pylint_flask",
-    ]
+    "python.linting.pylintArgs": ["--load-plugins", "pylint_flask_sqlalchemy", "pylint_flask"]
 }
