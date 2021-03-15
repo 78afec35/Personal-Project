@@ -1,6 +1,8 @@
 from datetime import datetime
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 app = Flask(__name__)
 # I know this is not supposed to be here, however security implementation is not something I am assessed on for this project.
@@ -8,5 +10,8 @@ app.config['SECRET_KEY'] = 'd4e754bef5ca6727f10a59665946bc42b07481dd9bbc66ed3dbc
 app.config['SQLALCHEMY_DATABASE_URI']=  'sqlite:///blog.db'
 # end of sensitive information
 db = SQLAlchemy(app)
-
+bcrypt=Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+login_manager.login_message_category = 'info'
 from personalproject import routes
