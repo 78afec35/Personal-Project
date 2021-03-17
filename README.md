@@ -104,7 +104,7 @@ Trello has been used as the primary source of project management.
 
 ### **Architecture**
 
-placeholder
+plaseholder
 
 ### **SWOT Analysis**
 + Strengths

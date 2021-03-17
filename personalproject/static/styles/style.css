@@ -199,7 +199,13 @@ nav a:hover {
   margin-right: 2rem;
   margin-left: 2rem;
 }
+.top{
+ object-fit: fill;
+}
 
+.bottom{
+  margin-bottom: 1em
+}
 .article-title {
   color: #444444;
 }
