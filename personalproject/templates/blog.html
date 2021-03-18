@@ -4,6 +4,7 @@
     Blog
 {%endblock%}
 {%block content%}
+<h1 class="content-section"> Posts </h1>
     {% if current_user.is_authenticated %}
     <div class= "content-section">
     <a class="btn btn-info d-flex justify-content-center" position = center href="{{url_for('new_post')}}">New Post</a></li>
