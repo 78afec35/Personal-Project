@@ -23,7 +23,8 @@ def home():
 
 @app.route("/blog")
 def blog():
-    posts=Post.query.all()
+    page = request.args.get('page', 1, type=int)
+    posts=Post.query.order_by( Post.date_posted.desc()).paginate(page=page , per_page = 5)
     return render_template("blog.html",posts=posts)
 
 @app.route("/contactme")
@@ -132,7 +133,7 @@ def post_update(post_id):
         form.content.data = post.content
     return render_template('create_post.html', title='Update Post', form = form, legend="Update Post")
 
-@app.route("/post/<int:post_id>/delete",methods = ['POST'])
+@app.route("/post/<int:post_id>/delete")
 @login_required
 def post_delete(post_id):
     post = Post.query.get_or_404(post_id)
@@ -142,3 +143,12 @@ def post_delete(post_id):
     db.session.commit()
     flash('Post Deleted!','danger')
     return redirect(url_for('blog'))
+
+@app.route("/user/<string:username>")
+def posts_user(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts=Post.query.filter_by(author=user)\
+        .order_by( Post.date_posted.desc())\
+        .paginate(page=page , per_page = 5)
+    return render_template("user_posts.html",posts=posts, user=user)
