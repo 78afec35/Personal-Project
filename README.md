@@ -328,9 +328,9 @@ Jenkins set up script courtesy of Dara
 ![Blog Page](ReadmeAssets/blog.png)
 ### Modify account credentials / Picture
 ![Account Page](ReadmeAssets/account.png)
-### Pust update
+### Post update/delete
 ![Post Update](ReadmeAssets/postpage.png)
-### Pust filter by user
+### Post filter by user
 ![Filter by user](ReadmeAssets/filterbyuser.png)
 
 
