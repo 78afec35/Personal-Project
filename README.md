@@ -314,6 +314,8 @@ Jenkins set up script courtesy of Dara
     pip install -r requirements.txt
     py.test --cov=personalproject personalproject/tests/
 
+![Jenkins](ReadmeAssets/jenkins.png)
+
 
 ### **Features**
 
