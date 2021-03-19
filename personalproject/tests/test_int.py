@@ -59,15 +59,18 @@ class Tests(TestBase):
         response = tester.get('/login', content_type='html/text')
         self.assertEqual(response.status_code,200)
 
+    def test_login_fuctionality_baddata(self):
+        tester=app.test_client(self)
+        response = tester.post('/login', data=dict(email="testa=min@testadmin.com",password="passw0assword", remember=True), follow_redirects = True)
+        self.assertIn(b'Login', response.data)
+
+
     def test_login_fuctionality_gooddata(self):
         tester=app.test_client(self)
         response = tester.post('/login', data=dict(email="testadmin@testadmin.com",password="passwordpassword", remember=True), follow_redirects = True)
         self.assertIn(b'Posts', response.data)
 
-    def test_login_fuctionality_baddata(self):
-        tester=app.test_client(self)
-        response = tester.post('/login', data=dict(email="testa=min@testadmin.com",password="passw0assword", remember=True), follow_redirects = True)
-        self.assertIn(b'Login', response.data)
+
     
     def test_home(self):
         tester=app.test_client(self)

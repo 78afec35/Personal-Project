@@ -16,11 +16,17 @@ Author: Suner Syuleyman
 
 + astroid 2.5
 + attrs 20.3.0
++ bcrypt 3.2.0
++ cffi 1.14.5
++ coverage 5.5
 + dnspython 2.1.0
 + email-validator 1.1.2
++ Flask-Bcrypt 0.7.1
 + Flask-CLI 0.4.0
++ Flask-Login 0.5.0
 + Flask-MySQL 1.5.2
 + Flask-SQLAlchemy 2.4.4
++ Flask-Testing 0.8.1
 + Flask-WTF 0.14.3
 + idna 3.1
 + importlib-metadata 3.7.2
@@ -30,9 +36,11 @@ Author: Suner Syuleyman
 + lazy-object-proxy 1.5.2
 + mccabe 0.6.1
 + packaging 20.9
++ Pillow 8.1.2
 + pkg-resources 0.0.0
 + pluggy 0.13.1
 + py 1.10.0
++ pycparser 2.20
 + pylint 2.7.1
 + pylint-flask 0.6
 + pylint-flask-sqlalchemy 0.2.0
@@ -40,10 +48,14 @@ Author: Suner Syuleyman
 + PyMySQL 1.0.2
 + pyparsing 2.4.7
 + pytest 6.2.2
++ pytest-cov 2.11.1
++ selenium 3.141.0
++ six 1.15.0
 + SQLAlchemy 1.3.23
 + toml 0.10.2
 + typed-ast 1.4.2
 + typing-extensions 3.7.4.3
++ urllib3 1.26.4
 + wrapt 1.12.1
 + WTForms 2.3.3
 + wtforms-validators 1.0.0
@@ -104,7 +116,81 @@ Trello has been used as the primary source of project management.
 
 ### **Architecture**
 
-plaseholder
+### Tree Diagram
+Flask Package Structure
+
+
+    ├── create.py
+    ├── instance
+    │   └── flaskr.sqlite
+    ├── personalproject
+    │   ├── blog.db
+    │   ├── forms.py
+    │   ├── __init__.py
+    │   ├── __init__.pyc
+    │   ├── models.py
+    │   ├── __pycache__
+    │   │   ├── forms.cpython-36.pyc
+    │   │   ├── __init__.cpython-36.pyc
+    │   │   ├── models.cpython-36.pyc
+    │   │   └── routes.cpython-36.pyc
+    │   ├── routes.py
+    │   ├── static
+    │   │   ├── img
+    │   │   │   ├── img1.jpg
+    │   │   │   ├── img2.jpg
+    │   │   │   ├── img3.jpg
+    │   │   │   ├── img4.jpg
+    │   │   │   └── userimages
+    │   │   │       ├── 9214079e48edcd5b98a83aef.jpg
+    │   │   │       ├── a636fc37db848b10921c0f27.jpg
+    │   │   │       ├── d33711aa72875b0d1374fb42.jpg
+    │   │   │       ├── dc8213501577cfdc994f81c0.jpg
+    │   │   │       └── default.jpg
+    │   │   └── styles
+    │   │       └── style.css
+    │   ├── templates
+    │   │   ├── account.html
+    │   │   ├── base.html
+    │   │   ├── blog.html
+    │   │   ├── contactme.html
+    │   │   ├── create_post.html
+    │   │   ├── index.html
+    │   │   ├── login.html
+    │   │   ├── post.html
+    │   │   ├── register.html
+    │   │   └── user_posts.html
+    │   └── tests
+    │       ├── __init__.py
+    │       ├── __pycache__
+    │       │   ├── __init__.cpython-36.pyc
+    │       │   └── test_int.cpython-36-pytest-6.2.2.pyc
+    │       └── test_int.py
+    ├── __pycache__
+    │   ├── forms.cpython-36.pyc
+    │   └── personalproject.cpython-36.pyc
+    ├── ReadmeAssets
+    │   ├── git.png
+    │   ├── RDP.png
+    │   ├── tree.txt
+    │   ├── Trello Example.png
+    │   ├── trello.png
+    │   └── XRDP.png
+    ├── README.md
+    ├── requirements.txt
+    ├── start.py
+    ├── tree.txt
+    └── venv
+
+### Architecture design
+
+Three tier monolithic structure
+
+    Web layer - HTML, CSS, JS
+    |
+    Application layer - Python, Flask, Jinja2
+    |
+    Database layer - MySQL(remote) , SQLite(local testing)
 
 ### **SWOT Analysis**
 + Strengths
@@ -116,6 +202,8 @@ plaseholder
     + Many packages are used and that can introduce dependencies on all these packages being supported
     + Basic framework which means more complicated features might need an advanced framework
     + Rigid 3 tier architecture
+    + Testing is incomplete without integration testing
+    + Difficult to test the login functionality of flask
 + Opportunities
     + There are many features that I would like to add onto this website
     + It can be integrated with more features and packages
