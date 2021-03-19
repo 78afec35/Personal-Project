@@ -236,15 +236,23 @@ Clone Link <https://github.com/78afec35/Personal-Project.git>
 + Google Chrome
 + Google Cloud Platform (GCP)
 + Ubuntu 18.10
-+ Bootstrap 4
++ Bootstrap 4.0
 
 ## Testing
 
-placeholder
+### **Unit testing**
+
+Flask authentication decorator has been causing problems with unit testing. As such I couldn't get a very high coverage on these tests. If we were allowed to use something like Selenium I would have been able to carry out full testing whilst circumventing flask's limitations. This is due to the complexity of this app and there being many interdependent components.
+
+![Unit Testing](ReadmeAssets/unittesting.png)
+
+Overall Coverage 64%
 
 ## Systems Integration and Build
 
-placeholder
+### **Jenkins**
+
+
 
 ## References
 
